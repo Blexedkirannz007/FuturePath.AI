@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuturePath AI - Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FuturePath AI</h1>
+            <p>Your Machine Learning Profile Analysis</p>
+        </header>
+
+        <main>
+            <div class="card result-card">
+                <h3>Your Predicted Career Path</h3>
+                <div id="careerOutput" class="career-title">Processing...</div>
+                <p id="explanationOutput">Retrieving classification branches...</p>
+                
+                <div class="action-buttons">
+                    <a href="quiz.html" class="btn-link">Retake Assessment</a>
+                    <a href="index.html" class="btn-secondary">Return Home</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Immediately fetch data passed from quiz.html via localStorage
+        const career = localStorage.getItem('predicted_career');
+        const explanation = localStorage.getItem('predicted_explanation');
+
+        if (career && explanation) {
+            document.getElementById('careerOutput').innerText = career;
+            document.getElementById('explanationOutput').innerText = explanation;
+        } else {
+            document.getElementById('careerOutput').innerText = "No Profile Found";
+            document.getElementById('explanationOutput').innerText = "Please return to the quiz page and complete your profile.";
+        }
+    </script>
+</body>
+</html>
